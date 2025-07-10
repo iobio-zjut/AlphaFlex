@@ -1,0 +1,16 @@
+--use_precomputed_msas
+--data_dir=/Alphafold_data
+--template_mmcif_dir=/Alphafold_data/pdb_mmcif/mmcif_files
+--obsolete_pdbs_path=/Alphafold_data/pdb_mmcif/obsolete.dat
+--uniref90_database_path=/Alphafold_data/uniref90/uniref90.fasta
+--max_template_date=3000-01-01
+--use_gpu_relax=True
+--model_preset=monomer_all
+--db_preset=full_dbs
+--pdb70_database_path=/Alphafold_data/pdb70
+--uniref30_database_path=/Alphafold_data/UniRef30_2022_02/UniRef30_2022_02
+--bfd_database_path=/Alphafold_data/bfd/bfd_metaclust_clu_complete_id30_c90_final_seq.sorted_opt
+--max_recycles=3
+--dropout=True
+--no_templates=True
+--models_to_relax=None

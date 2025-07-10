@@ -39,26 +39,6 @@ python scripts/sp.py \
   --filter_list "$filter_list" \
   --max_workers 1
 
-#python scripts/copy_pdb.py \
-#  --input_dir "$msa_out_dir/structure_profile_temp1" \
-#  --template_dir "$template_dir" \
-#  --output_dir "$msa_out_dir/structure_profile_temp2"
-#
-#python scripts/structure_profile2.py \
-#  --tmalign_path "$BASE_DIR/scripts" \
-#  --query_dir "$pdb_dir" \
-#  --target_dir "$msa_out_dir/structure_profile_temp2" \
-#  --align_dir "$msa_out_dir/structure_profile_temp3" \
-#  --max_workers 1 \
-#  --filter_list "$filter_list"
-#
-#python scripts/structure_profile3.py \
-#  --input_dir "$msa_out_dir/structure_profile_temp3" \
-#  --output_dir "$msa_out_dir" \
-#  --remp_dir1 "$msa_out_dir/structure_profile_temp1" \
-#  --remp_dir2 "$msa_out_dir/structure_profile_temp2" \
-#  --remp_dir3 "$msa_out_dir/structure_profile_temp3"
-
 #-------------------*** MSA embedding ***-------------------
 python "$BASE_DIR"/flexible_residue/MSA_embedding/run_MSA_embeddings.py \
   --input_base_dir "$msa_out_dir" \

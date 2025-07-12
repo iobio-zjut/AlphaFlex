@@ -1,11 +1,7 @@
 #!/bin/bash
 
 source "$(dirname "$0")/config.sh"
-export CUDA_VISIBLE_DEVICES=1
 #----------------------*** Search MSA ***----------------------
-module load anaconda
-source activate AFsample
-
 python scripts/search_MSA.py \
   --pdb_dir "$pdb_dir" \
   --fasta_dir "$fasta_dir" \
@@ -14,9 +10,6 @@ python scripts/search_MSA.py \
   --num_threads "$num_threads"
 
 #-------------------*** Structure Profile ***-------------------
-module load anaconda
-source activate foldseek
-
 bash scripts/structure_profile1.sh \
   --input_base_dir "$pdb_dir" \
   --target_db "$target_db" \
@@ -25,10 +18,6 @@ bash scripts/structure_profile1.sh \
   --filter_list "$filter_list" \
   --req_count 200 \
   --max_jobs 10
-
-module load anaconda
-source activate /home/data/user/dongl/sing/pytorch
-
 
 python scripts/sp.py \
   --input_m8_dir "$msa_out_dir/structure_profile_temp1" \
@@ -65,9 +54,6 @@ python scripts/msa_sampling.py \
   --depths "16,32,64,128,256,512,1024,1536,2048,2560,3072,3584,4096,4608,5120"
 
 #-------------------*** predicted conformation ***-------------------
-
-module load anaconda
-source activate AFsample
 
 python scripts/predict_multiple_conformations.py \
   --input_base_dir "$msa_out_dir" \

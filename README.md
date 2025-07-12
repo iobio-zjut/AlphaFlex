@@ -10,14 +10,14 @@ AlphaFlex provides a method to capture protein multiple conformations. AlphaFlex
 College of Information Engineering  
 Zhejiang University of Technology, Hangzhou 310023, China  
 ✉️ Email: [zgj@zjut.edu.cn](mailto:zgj@zjut.edu.cn)
--
+
 ## 👨‍💻 Developer
 
 **Lingyu Ge**  
 College of Information Engineering  
 Zhejiang University of Technology, Hangzhou 310023, China  
 ✉️ Email: [gelingyu@zjut.edu.cn](mailto:gelingyu@zjut.edu.cn)
--
+
 
 ## 🛠 Installation
 

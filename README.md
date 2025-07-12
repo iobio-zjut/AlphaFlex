@@ -90,7 +90,7 @@ From: https://zhanggroup.org/TM-score/
 #### ⚙️ Configuration Parameters (`monomer_full_dbs.flag`)
 ```bash
 ./AlphaFlex/af_multiple_conformation/monomer_full_dbs.flag
-
+```
 
 #### 🚀 generate multiple conformations
 ```bash

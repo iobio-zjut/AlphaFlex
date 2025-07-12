@@ -2,22 +2,22 @@
 # Accuracy Modeling of Protein Multiple Conformations via Predicted Flexible Residues
 
 AlphaFlex provides a method to capture protein multiple conformations. AlphaFlex predicts multiple conformational states through AlphaFold2 by targeted masking of MSA columns corresponding to deep learning-predicted flexible residues, to selectively attenuate dominant conformational signals, enhance minor conformational features, and preserve evolutionary constraints in structural core regions. This approach establishes a quantitative relationship among structural dynamics, evolutionary features, and functional conformations, achieving robust multiple conformations prediction while fully retaining AlphaFold2’s original architectural framework.
+--
 
----
 ## 📬 Contact (Supervisor)
 
 **Prof. Guijun Zhang**  
 College of Information Engineering  
 Zhejiang University of Technology, Hangzhou 310023, China  
 ✉️ Email: [zgj@zjut.edu.cn](mailto:zgj@zjut.edu.cn)
----
+-
 ## 👨‍💻 Developer
 
 **Lingyu Ge**  
 College of Information Engineering  
 Zhejiang University of Technology, Hangzhou 310023, China  
 ✉️ Email: [gelingyu@zjut.edu.cn](mailto:gelingyu@zjut.edu.cn)
----
+-
 
 ## 🛠 Installation
 

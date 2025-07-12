@@ -46,7 +46,7 @@ scipy==1.11
 tensorflow-cpu==2.11.0/
 ```
 
-### Required Models & Resources
+### 📥 Required Models & Resources
 Download and place the following models:
 
 AlphaFold2 parameters/
@@ -64,7 +64,7 @@ From: https://zhanggroup.org/TM-score/
 → Download: TMalign/
 → Place in: ./AlphaFlex/scripts/
 
-### Example Output
+### 📂 Example Output
 ```bash
 ./AlphaFlex/example/4AKE_B/
 ```

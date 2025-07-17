@@ -18,6 +18,10 @@ College of Information Engineering
 Zhejiang University of Technology, Hangzhou 310023, China  
 ✉️ Email: [gelingyu@zjut.edu.cn](mailto:gelingyu@zjut.edu.cn)
 
+**Xinyue Cui**  
+College of Information Engineering  
+Zhejiang University of Technology, Hangzhou 310023, China  
+✉️ Email: [Cuixinyue@zjut.edu.cn](mailto:Cuixinyue@zjut.edu.cn)
 
 ## 🛠 Installation
 

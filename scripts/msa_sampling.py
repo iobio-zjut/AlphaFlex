@@ -165,39 +165,36 @@ def firetrain_mask_for_long_fragment(start, end):
 
 
 def read_a3m_sequences(a3m_path):
-    """Reads A3M file, preprocesses sequences, and returns a dictionary."""
     sequences = {}
-    try:
-        with open(a3m_path, 'r') as f:
-            seq_id = None
-            sequence = ""
-            for line in f:
-                line = line.strip()
-                if line.startswith(">"):
-                    if seq_id:
-                        sequences[seq_id] = sequence
-                    seq_id = line[1:]
-                    sequence = ""
-                else:
-                    sequence += line.replace('.', '')
-            if seq_id:
-                sequences[seq_id] = sequence
-    except FileNotFoundError:
-        print(f"Error: A3M file not found at {a3m_path}", file=sys.stderr)
-        return {}
-    except Exception as e:
-        print(f"Error reading A3M file {a3m_path}: {e}", file=sys.stderr)
-        return {}
+    with open(a3m_path, 'r') as f:
+        seq_id = None
+        sequence = ""
+        for line in f:
+            line = line.strip()
+            if line.startswith(">"):
+                if seq_id:
+                    processed_seq = ''.join([residue for residue in sequence if residue.isupper() or residue == "-"])
+                    if processed_seq:
+                        sequences[seq_id] = processed_seq
+                seq_id = line[1:]
+                sequence = ""
+            else:
+                sequence += line
+        if seq_id:
+            processed_seq = ''.join([residue for residue in sequence if residue.isupper() or residue == "-"])
+            if processed_seq:
+                sequences[seq_id] = processed_seq
     return sequences
 
 
 # --- MSA Splitting and Renaming Functions ---
 
 def filter_sequences_by_length(sequences):
-    """Filters sequences to ensure they all have the same length as the first sequence."""
     sequences_list = list(sequences.items())
     if not sequences_list:
+        print("Warning: No sequences found to filter.", file=sys.stderr)
         return {}
+
     main_sequence_length = len(sequences_list[0][1])
     filtered_sequences = {
         seq_id: seq for seq_id, seq in sequences.items()
@@ -207,16 +204,26 @@ def filter_sequences_by_length(sequences):
 
 
 def split_msa_by_depth(sequences, depth_split_sizes):
-    """Splits the MSA into subsets based on specified depth sizes."""
+
     sequences_list = list(sequences.items())
     msa_parts = {}
     total_sequences = len(sequences_list)
 
-    for depth_label, depth in enumerate(depth_split_sizes, start=1):
-        end_idx = min(depth, total_sequences)
-        msa_part = dict(sequences_list[:end_idx])
-        if msa_part:
-            msa_parts[f"subset_{depth_label}"] = msa_part
+    generated_depths = set()
+
+    sorted_depths = sorted(list(set(d for d in depth_split_sizes if d > 0)))
+
+    for depth_label, target_depth in enumerate(sorted_depths, start=1):
+        actual_depth_to_cut = min(target_depth, total_sequences)
+
+        if actual_depth_to_cut in generated_depths:
+            continue
+
+        msa_part = dict(sequences_list[:actual_depth_to_cut])
+
+        generated_depths.add(actual_depth_to_cut)
+
+        msa_parts[f"subset_{actual_depth_to_cut}"] = msa_part
     return msa_parts
 
 
@@ -406,7 +413,7 @@ def main_workflow(base_input_dir, npz_filename="flex.npz", threshold=0.3, window
                 merged_fragments,
                 sample_folder_name,
                 protein_folder_path,
-                current_target_file_index, 
+                current_target_file_index,
                 depth_split_sizes
             )
 

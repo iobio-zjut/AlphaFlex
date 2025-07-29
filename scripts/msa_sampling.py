@@ -347,7 +347,7 @@ def main_workflow(base_input_dir, npz_filename="flex.npz", threshold=0.3, window
         msa_input_path_for_protein = os.path.join(protein_folder_path, "msas")
 
         # Reset index for each new protein target
-        current_target_file_index = 0
+        current_target_file_index = 1
 
         current_npz_path = os.path.join(protein_folder_path, npz_filename)
         if not os.path.exists(current_npz_path):
